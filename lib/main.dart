@@ -17,6 +17,60 @@ class MyApp extends StatelessWidget {
           centerTitle: false,
           backgroundColor: Colors.brown[800],
         ),
+        body: Container(
+            height: 140, width: 350,
+            margin: EdgeInsets.fromLTRB(40, 20, 40, 20),
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child: Row(
+              children: [
+                Container(
+                    width: 120, height: 120,
+                    margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/dog.jpeg'),
+                        ),
+                        borderRadius: BorderRadius.circular(10)
+                    )
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                        child: Text("핫도그 (수컷, 4살)", style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold
+                        ))
+                    ),
+                    Text("닥스훈트", style: TextStyle(
+                      fontSize: 15,
+                    )),
+                    SizedBox(
+                        child: Text("서초구 양재동 - 업데이트 23분전", style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey
+                        ))
+                    ),
+                    SizedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.thumb_up_alt_outlined),
+                          Text("48")
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            )
+        ),
         bottomNavigationBar: BottomAppBar(
           child: SizedBox(
             height: 50,
