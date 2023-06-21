@@ -38,14 +38,14 @@ class MyApp extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)
                     )
                 ),
-                Column(
+                Expanded(child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
                         child: Text("핫도그 (수컷, 4살)", style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold
                         ))
                     ),
                     Text("닥스훈트", style: TextStyle(
@@ -57,17 +57,15 @@ class MyApp extends StatelessWidget {
                             color: Colors.grey
                         ))
                     ),
-                    SizedBox(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.thumb_up_alt_outlined),
-                          Text("48")
-                        ],
-                      ),
-                    )
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(Icons.thumb_up_alt_outlined),
+                        Text("48"),
+                      ],
+                    ),
                   ],
-                ),
+                ),)
               ],
             )
         ),
