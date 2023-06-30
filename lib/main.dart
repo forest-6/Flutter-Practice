@@ -48,6 +48,28 @@ class MyApp extends StatelessWidget {
 class Main extends StatelessWidget {
   const Main({super.key});
 
+  static const dogMockData = [
+    {
+      'name': '코코',
+      'breed': '골든리트리버',
+      'gender': '수컷',
+      'imgUrl':
+          'https://cdn.pixabay.com/photo/2019/07/30/05/53/dog-4372036_1280.jpg'
+    },
+    {'name': '초코', 'breed': '푸들', 'gender': '수컷', 'imgUrl': ''},
+    {'name': '콩이', 'breed': '닥스훈트', 'gender': '암컷', 'imgUrl': ''},
+    {'name': '까미', 'breed': '포메라리안', 'gender': '암컷', 'imgUrl': ''},
+    {'name': '뽀삐', 'breed': '말티즈', 'gender': '암컷', 'imgUrl': ''},
+    {'name': '똘이', 'breed': '시츄', 'gender': '수컷', 'imgUrl': ''},
+    {'name': '장군', 'breed': '재패니즈 스피츠', 'gender': '암컷', 'imgUrl': ''},
+    {'name': '숙희', 'breed': '시베리안 허스키', 'gender': '수컷', 'imgUrl': ''},
+    {'name': '마음이', 'breed': '진돗개', 'gender': '암컷', 'imgUrl': ''},
+    {'name': '아리', 'breed': '요크셔테리어', 'gender': '암컷', 'imgUrl': ''},
+    {'name': '포도', 'breed': '단모 치와와', 'gender': '수컷', 'imgUrl': ''},
+    {'name': '방울이', 'breed': '비숑', 'gender': '수컷', 'imgUrl': ''},
+    {'name': '짱구', 'breed': '퍼그', 'gender': '수컷', 'imgUrl': ''},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -84,15 +106,7 @@ class Main extends StatelessWidget {
                         spacing: 10,
                         runSpacing: 15,
                         children: [
-                          DogComponent(),
-                          DogComponent(),
-                          DogComponent(),
-                          DogComponent(),
-                          DogComponent(),
-                          DogComponent(),
-                          DogComponent(),
-                          DogComponent(),
-                          DogComponent(),
+                          DogMiniBox(),
                         ],
                       ),
                     )
@@ -105,33 +119,39 @@ class Main extends StatelessWidget {
   }
 }
 
-class DogComponent extends StatelessWidget {
-  const DogComponent({super.key});
+class DogMiniBox extends StatelessWidget {
+  const DogMiniBox({
+    Key? key,
+    required this.dogDate,
+  }) : super(key: key);
+
+  final dogDate;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 130,
-      height: 170,
+      height: 180,
       decoration: BoxDecoration(
         border: Border.all(width: 1),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.network(
               'https://cdn.pixabay.com/photo/2019/07/30/05/53/dog-4372036_1280.jpg',
               width: double.infinity,
               height: 110,
               fit: BoxFit.cover),
-          Container(
-            child: Text('name 1'),
+          SizedBox(
+            child: Text('$dogDate.name'),
           ),
-          Container(
-            child: Text('breed 1'),
+          SizedBox(
+            child: Text('$dogDate.breed'),
           ),
-          Container(
-            child: Text('Male or Female'),
+          SizedBox(
+            child: Text('$dogDate.gender'),
           ),
         ],
       ),
