@@ -1,7 +1,108 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("DOG COMMUNITY"),
+          centerTitle: false,
+          backgroundColor: Color(0xff617A55),
+        ),
+        body: Main(),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          child: SizedBox(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(
+                  Icons.favorite,
+                  color: Color(0xff617A55),
+                ),
+                Icon(
+                  Icons.pets,
+                  color: Color(0xff617A55),
+                ),
+                Icon(
+                  Icons.person,
+                  color: Color(0xff617A55),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Main extends StatelessWidget {
+  const Main({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: double.infinity,
+                height: 200,
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                decoration: BoxDecoration(
+                  color: Color(0xffAECAA1),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Text('event'),
+              ),
+              SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
+                      child: Text('Popular dogs',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                    SizedBox(
+                      child: Wrap(
+                        alignment: WrapAlignment.spaceAround,
+                        spacing: 10,
+                        runSpacing: 15,
+                        children: [
+                          DogComponent(),
+                          DogComponent(),
+                          DogComponent(),
+                          DogComponent(),
+                          DogComponent(),
+                          DogComponent(),
+                          DogComponent(),
+                          DogComponent(),
+                          DogComponent(),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ));
+  }
 }
 
 class DogComponent extends StatelessWidget {
@@ -10,88 +111,29 @@ class DogComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140, width: 350,
-      margin: EdgeInsets.fromLTRB(40, 20, 40, 20),
-      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+      width: 130,
+      height: 170,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10)
+        border: Border.all(width: 1),
+        borderRadius: BorderRadius.circular(5),
       ),
-      child: Row(
+      child: Column(
         children: [
+          Image.network(
+              'https://cdn.pixabay.com/photo/2019/07/30/05/53/dog-4372036_1280.jpg',
+              width: double.infinity,
+              height: 110,
+              fit: BoxFit.cover),
           Container(
-              width: 120, height: 120,
-              margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/dog.jpeg'),
-                  ),
-                  borderRadius: BorderRadius.circular(10)
-              )
+            child: Text('name 1'),
           ),
-          Expanded(child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(
-                  child: Text("핫도그 (수컷, 4살)", style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
-                  ))
-              ),
-              Text("닥스훈트", style: TextStyle(
-                fontSize: 15,
-              )),
-              SizedBox(
-                  child: Text("서초구 양재동 - 업데이트 23분전", style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey
-                  ))
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Icon(Icons.thumb_up_alt_outlined),
-                  Text("48"),
-                ],
-              ),
-            ],
-          ),)
+          Container(
+            child: Text('breed 1'),
+          ),
+          Container(
+            child: Text('Male or Female'),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title:  Text("DOGS"),
-          leading:  Icon(Icons.menu),
-          centerTitle: false,
-          backgroundColor: Colors.brown[800],
-        ),
-        body: DogComponent(),
-        bottomNavigationBar: BottomAppBar(
-          child: SizedBox(
-            height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.camera_alt, color: Colors.brown[600],),
-                Icon(Icons.home, color: Colors.brown[600],),
-                Icon(Icons.message, color: Colors.brown[600],),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }
